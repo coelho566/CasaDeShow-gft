@@ -2,12 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	layout:decorator="TemplatePadrao">
 
 
 <section layout:fragment="conteudo">
    <div class="container">
-        <h1 class="text-center">Bem-vindo user</h1><br>
+        <div class="text-center">
+        <span sec:authentication="name"></span>
+        	<div sec:authorize="hasRole('ADMIN')">
+			  Voce é o administrador dessa porra!
+			</div>
+			<div sec:authorize="hasRole('USER')">
+			  Você é somente um usuario!
+			</div>
+        </div><br>
     
     <div class="card ">
         <h5 class="card-header text-white bg-dark ">Nome do show</h5>

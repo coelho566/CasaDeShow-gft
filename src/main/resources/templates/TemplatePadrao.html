@@ -10,24 +10,61 @@
 <title>Classificados</title>
 </head>
 <body>
-
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal">Gerenciador de Eventos</h5>
-        <nav class="my-2 my-md-0 mr-md-3 float-left">
-            <a class="p-2 text-dark" href="/">Home</a>
-            <a class="p-2 text-dark" href="/casa">Casas de Show</a>
-            <a class="p-2 text-dark" href="#">Eventos</a>
-            <a class="p-2 text-dark" href="#">Histórico</a>
-        </nav>
-        <a class="btn btn-outline-primary" href="#">Login</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand" href="#">Gerenciador de eventos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Casa de Show</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Eventos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Histórico</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light " data-toggle="tooltip" data-placement="top" title="Carrinho">
+            <span>Bem vindo  <span sec:authentication="name"></span> !</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light " data-toggle="tooltip" data-placement="top" title="Carrinho">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default"
+            aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="#">Meu perfil</a>
+            <a class="dropdown-item" th:href="@{/logout}">Sair</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </nav>
+
 
 <section layout:fragment="conteudo">
  
  </section>
 
-<script src="/js/jquery.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js" ></script>
 </body>
 </html>

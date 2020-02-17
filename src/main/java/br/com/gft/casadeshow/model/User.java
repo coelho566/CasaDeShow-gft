@@ -1,5 +1,9 @@
 package br.com.gft.casadeshow.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +17,7 @@ public class User {
 	private Long id;
 	private String username;
 	private String password;
+	private String roles = "";
 
 	public Long getId() {
 		return id;
@@ -36,6 +41,18 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getRoles() {
+		return roles;
+	}
+	
+	public List<String> getRolesList(){
+		if(this.roles.length() > 0) {
+			return Arrays.asList(this.roles.split(","));
+		}
+		
+		return new ArrayList<>();
 	}
 
 }
