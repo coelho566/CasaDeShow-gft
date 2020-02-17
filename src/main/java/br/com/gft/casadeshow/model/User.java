@@ -16,6 +16,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String username;
+	private String email;
 	private String password;
 	private String roles = "";
 
@@ -35,6 +36,14 @@ public class User {
 		this.username = username;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -42,16 +51,16 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getRoles() {
 		return roles;
 	}
-	
-	public List<String> getRolesList(){
-		if(this.roles.length() > 0) {
+
+	public List<String> getRolesList() {
+		if (this.roles.length() > 0) {
 			return Arrays.asList(this.roles.split(","));
 		}
-		
+
 		return new ArrayList<>();
 	}
 

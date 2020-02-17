@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/bootstrap.min.css" >
+<link rel="stylesheet" href="/css/stylo.css" >
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<title>Casa de Show</title>
+</head>
+<body>
+<div class="login-reg-panel">
+		<div class="login-info-box">
+			<h2>Tem uma conta?</h2>
+			<p>Faça seu login</p>
+			<label id="label-register" for="log-reg-show">Login</label>
+			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+		</div>
+							
+		<div class="register-info-box">
+			<h2>Não tem uma conta?</h2>
+			<p>Faça seu cadastro.</p>
+			<label id="label-login" for="log-login-show">Registrar</label>
+			<input type="radio" name="active-log-panel" id="log-login-show">
+		</div>
+							
+		<div class="white-panel">
+		<form th:action="@{/login}" method="post">
+			<div class="login-show">
+				<h2>LOGIN</h2>
+				<input type="text" placeholder="Email" name="username">
+				<input type="password" placeholder="Password" name="password">
+				<input type="submit" value="Login">
+				<a href="">Esqueceu a senha?</a>
+			</div>
+		</form>	
+			<div class="register-show">
+				<h2>REGISTRAR</h2>
+				<input type="text" placeholder="Nome" required>
+				<input type="email" placeholder="E-mail" required>
+				<input type="password" placeholder="Senha" required>
+				<input type="submit" value="Register">
+			</div>
+		</div>
+	</div>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.min.js" ></script>
+</body>
+</html>
