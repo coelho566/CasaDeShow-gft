@@ -1,24 +1,23 @@
-$(document).ready(function() {
-	$('.login-info-box').fadeOut();
-	$('.login-show').addClass('show-log-panel');
-});
 
-$('.login-reg-panel input[type="radio"]').on('change', function() {
-	if ($('#log-login-show').is(':checked')) {
-		$('.register-info-box').fadeOut();
-		$('.login-info-box').fadeIn();
+(function ($) {
+    "use strict";
 
-		$('.white-panel').addClass('right-log');
-		$('.register-show').addClass('show-log-panel');
-		$('.login-show').removeClass('show-log-panel');
+    var showPass = 0;
+    $('.btn-show-pass').on('click', function(){
+        if(showPass == 0) {
+            $(this).next('input').attr('type','text');
+            $(this).find('i').removeClass('fa-eye');
+            $(this).find('i').addClass('fa-eye-slash');
+            showPass = 1;
+        }
+        else {
+            $(this).next('input').attr('type','password');
+            $(this).find('i').removeClass('fa-eye-slash');
+            $(this).find('i').addClass('fa-eye');
+            showPass = 0;
+        }
+        
+    });
+    
 
-	} else if ($('#log-reg-show').is(':checked')) {
-		$('.register-info-box').fadeIn();
-		$('.login-info-box').fadeOut();
-
-		$('.white-panel').removeClass('right-log');
-
-		$('.login-show').addClass('show-log-panel');
-		$('.register-show').removeClass('show-log-panel');
-	}
-});
+})(jQuery);
