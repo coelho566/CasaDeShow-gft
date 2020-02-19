@@ -25,7 +25,7 @@ public class Event {
 	private BigDecimal value;
 	
 	@ManyToOne
-	private HouseShow houseShow;
+	private House houseShow;
 
 	public Long getId() {
 		return id;

@@ -13,7 +13,7 @@ import br.com.gft.casadeshow.model.User;
 import br.com.gft.casadeshow.service.UserService;
 
 @Controller
-public class RegisterController {
+public class UserController {
 	
 	@Autowired
 	private UserService service;
@@ -28,20 +28,17 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/saveUser")
-	private ModelAndView salvarUser(@Validated User user, Errors errors, RedirectAttributes attributes) {
+	private ModelAndView salvarUser(@Validated User user) {
 		ModelAndView mv = new ModelAndView("cadastraUsuario");
 		
-		if(errors.hasErrors() == true) {
-			return mv;
-		}
-		
+	
 		if(service.hasUser(user) == true) {
-			attributes.addFlashAttribute("erro", "Usuário já existe!");
+			mv.addObject("erro", "Usuário já existe!");
 			return mv;
 		}
 		
 		service.saveUser(user);
-		attributes.addFlashAttribute("sucesso", "Usuário cadastrado com sucesso!");
+		mv.addObject("sucesso", "Usuário cadastrado com sucesso!");
 		
 		return mv;
 	}

@@ -20,7 +20,7 @@
 						Usuário
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" th:field="*{username}" >
+						<input class="input100" type="text" th:field="*{username}" required >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -28,7 +28,7 @@
 						E-mail
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" th:field="*{email}" >
+						<input class="input100" type="text" th:field="*{email}" required >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -39,7 +39,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" th:field="*{password}" >
+						<input class="input100" type="password" th:field="*{password}" required>
 						<span class="focus-input100"></span>
 					</div>
 					<div class="flex-sb-m w-full p-b-48">
