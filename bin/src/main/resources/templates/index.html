@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="TemplatePadrao">
+
+
+<section layout:fragment="conteudo">
+   <div class="container">
+     <div layout:insert="msgSucesso"></div>
+    <div class="card ">
+        <h5 class="card-header text-white bg-dark ">Nome do show</h5>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <div class="list-group">
+                        <li class="list-group-item">Preço do Ingresso:</li>
+                        <li class="list-group-item">Data:</li>
+                        <li class="list-group-item">Local:</li>
+                        <li class="list-group-item">Ingressos:</li>
+                    </div><br>
+                    <button type="button" class="btn btn-dark">Comprar</button>
+                  </div>
+                  <div class="col-sm text-center">
+                    <img class="card-img-top " style="width: 18rem" src="/imagens/coringa.jpg" alt="Imagem de capa do card">
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div><br>
+
+      <div class="card">
+        <h5 class="card-header text-white bg-dark ">Nome do show</h5>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <div class="list-group">
+                        <li class="list-group-item">Preço do Ingresso:</li>
+                        <li class="list-group-item">Data:</li>
+                        <li class="list-group-item">Local:</li>
+                        <li class="list-group-item">Ingressos:</li>
+                    </div><br>
+                    <button type="button" class="btn btn-dark">Comprar</button>
+                  </div>
+                  <div class="col-sm text-center">
+                    <img class="card-img-top " style="width: 18rem" src="/imagens/coringa.jpg" alt="Imagem de capa do card">
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+</html>
