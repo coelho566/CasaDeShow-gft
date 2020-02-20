@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorator="TemplatePadrao">
+<section layout:fragment="conteudo" class="container"><br><br>
+	<div layout:insert="msgErro"></div>
+	<div layout:insert="msgSucesso"></div>
+	<span class="login100-form-title p-b-32">
+		Lista de eventos
+	</span>
+<a href="/evento/cadastraEvento">Cadastrar Evento</a>
+<table class="table table-hover table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Capacidade</th>
+      <th scope="col">Data</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Local</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    </tr>
+    <tr>
+    	<td colspan="6" th:if="${#lists.isEmpty(casa)}">Nenhum evento cadastrado</td>
+    </tr>
+ 
+  </tbody>
+</table>
+</section>
+</html>

@@ -6,7 +6,8 @@ public enum MusicCategory {
 	SERTANEJO("Sertanejo"),
 	ELETRONICO("Eletrônico"),
 	FUNK("Funk"),
-	AXE("Axé");
+	AXE("Axé"),
+	POP("Pop");
 	
 	private String description;
 	

@@ -1,12 +1,11 @@
 package br.com.gft.casadeshow.controller;
 
-import java.io.InputStream;
 import java.util.List;
-
-import javax.persistence.GeneratedValue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,10 +36,12 @@ public class HouseController {
 	}
 
 	@PostMapping("/saveHouse")
-	private ModelAndView salvarCasa(House house, RedirectAttributes attributes) {
+	private ModelAndView salvarCasa(@Validated House house, RedirectAttributes attributes, Errors errors) {
 		ModelAndView mv = new ModelAndView("cadastraCasa");
 		
-		if(service.hasHouse(house) == true) {
+		if(errors.hasErrors() == true) {
+			return mv;
+		}else if(service.hasHouse(house) == true) {
 			mv.addObject("erro", "Casa de show já existe!");
 			return mv;
 		}
