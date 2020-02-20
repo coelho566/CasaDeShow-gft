@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Event {
 
@@ -21,13 +23,16 @@ public class Event {
 	private Long id;
 	private String name;
 	private int capacity;
-
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
 	private BigDecimal value;
 	
 	@Enumerated(EnumType.STRING)
 	private MusicCategory category;
+	
+	private String foto;
 	
 	@ManyToOne
 	private House houseShow;
@@ -72,4 +77,29 @@ public class Event {
 		this.value = value;
 	}
 
+	public MusicCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(MusicCategory category) {
+		this.category = category;
+	}
+
+	public House getHouseShow() {
+		return houseShow;
+	}
+
+	public void setHouseShow(House houseShow) {
+		this.houseShow = houseShow;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	
 }

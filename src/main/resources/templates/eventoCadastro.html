@@ -7,7 +7,7 @@
 <section layout:fragment="conteudo" class="container"><br>
 	<div layout:insert="msgErro"></div>
 	<div layout:insert="msgSucesso"></div>
-		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/casa/saveHouse}" method="POST" >
+		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/evento/saveEvent}" enctype="multipart/form-data" method="POST" >
 								
 			<span class="login100-form-title p-b-32">
 					Cadastrar / Editar evento
@@ -25,7 +25,7 @@
 					Capacidade
 			</span>
 			<div class="wrap-input100 validate-input m-b-36">
-			<input class="input100" type="text" name="street" >
+			<input class="input100" type="number" name="capacity" >
 				<span class="focus-input100"></span>
 			</div>
 			
@@ -33,7 +33,7 @@
 					Data
 			</span>
 			<div class="wrap-input100 validate-input m-b-36">
-			<input class="input100" type="text" name="street" >
+			<input class="input100" type="text" name="dateEvent" >
 				<span class="focus-input100"></span>
 			</div>
 			
@@ -41,22 +41,32 @@
 					Valor do ingresso
 			</span>
 			<div class="wrap-input100 validate-input m-b-36">
-			<input class="input100" type="text" name="street" >
+			<input class="input100" type="text" name="value" >
+				<span class="focus-input100"></span>
+			</div>
+			
+			<span class="txt1 p-b-11">
+					Foto de capa
+			</span>
+			<div class="wrap-input100 validate-input m-b-36">
+			<input  type="file" name="file" >
 				<span class="focus-input100"></span>
 			</div>
 			
 			<span class="txt1 p-b-11">
 					Local do show
 			</span>
-			<select class="wrap-input100 validate-input m-b-36" style="height: 50px; padding-left: 15px;">
+			<select class="wrap-input100 validate-input m-b-36" style="height: 50px; padding-left: 15px;" name="houseShow">
 				<option></option>
 				<option th:each="casa : ${listaCasa}" th:value="${casa.id}" th:text="${casa.name}"  ></option>
 			</select>
 			
+			
+			
 			<span class="txt1 p-b-11">
 					Categoria
 			</span>
-			<select class="wrap-input100 validate-input m-b-36" style="height: 50px; padding-left: 15px;">
+			<select class="wrap-input100 validate-input m-b-36" style="height: 50px; padding-left: 15px;" name="category">
 				<option></option>
 				<option th:each="status : ${categoria}" th:value="${status}" th:text="${status.description}"  ></option>
 			</select>

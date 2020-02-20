@@ -2,6 +2,7 @@ package br.com.gft.casadeshow.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,26 +21,27 @@ public class UserController {
 	
 	@RequestMapping("/cadastro")
 	private ModelAndView cadastro() {
-		User user = new User();
+		
 		ModelAndView mv = new ModelAndView("cadastraUsuario");
-		mv.addObject("user", user);
+		mv.addObject(new User());
 		
 		return mv;
 	}
 	
 	@PostMapping("/saveUser")
-	private ModelAndView salvarUser(@Validated User user) {
+	private ModelAndView salvarUser(@Validated User user, BindingResult errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("cadastraUsuario");
 		
-	
-		if(service.hasUser(user) == true) {
+		if(errors.hasErrors()) {
+			return mv;
+		}else if(service.hasUser(user) == true) {
 			mv.addObject("erro", "Usuário já existe!");
 			return mv;
 		}
 		
 		service.saveUser(user);
-		mv.addObject("sucesso", "Usuário cadastrado com sucesso!");
+		attributes.addFlashAttribute("sucesso", "Usuário cadastrado com sucesso!");
 		
-		return mv;
+		return new ModelAndView("redirect:/login");
 	}
 }

@@ -8,10 +8,10 @@
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-			<div layout:insert="msgSucesso"></div>
+			
 			<div layout:insert="msgErro"></div>
 				<form class="login100-form validate-form flex-sb flex-w" th:action="@{/saveUser}" method="POST" th:object="${user}">
-				
+				<div th:insert="msgAviso"></div>
 					<span class="login100-form-title p-b-32">
 						 Cadastre-se
 					</span>
@@ -20,7 +20,7 @@
 						Usuário
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" th:field="*{username}" required >
+						<input class="input100" type="text" th:field="*{username}" >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -28,7 +28,7 @@
 						E-mail
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" th:field="*{email}" required >
+						<input class="input100" type="text" th:field="*{email}" >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -39,7 +39,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" th:field="*{password}" required>
+						<input class="input100" type="password" th:field="*{password}">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="flex-sb-m w-full p-b-48">
