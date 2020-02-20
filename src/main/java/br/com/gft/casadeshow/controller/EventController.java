@@ -6,12 +6,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.gft.casadeshow.model.Event;
 import br.com.gft.casadeshow.model.House;
@@ -44,13 +47,17 @@ public class EventController {
 	}
 	
 	@PostMapping("/saveEvent")
-	public ModelAndView saveEvent(@RequestParam MultipartFile file,  Event event) {
+	public ModelAndView saveEvent(@RequestParam MultipartFile file,@Validated  Event event, Errors errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("eventoCadastro");
 		
-		System.out.println();
+		if(errors.hasErrors()) {
+			return mv;
+		}
+		eventService.saveEvent(event, file);
+		attributes.addFlashAttribute("sucesso", "Evento cadastrado com sucesso!");
 	
 		
-		return mv;
+		return new ModelAndView("redirect:/evento");
 	}
 	
 	

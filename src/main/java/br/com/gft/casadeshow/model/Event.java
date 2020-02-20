@@ -12,8 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Event {
@@ -21,12 +25,21 @@ public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private int capacity;
 	
+	@NotEmpty(message = "Preencha o campo nome")
+	private String name;
+	
+	@NotNull(message = "Campo capacidade não pode esta vazio")
+	private BigDecimal capacity;
+	
+	@NotNull(message = "Preencha o campo data")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
+	
+	@NotNull(message = "Valor obrigatório")
+	@DecimalMin(value = "0.01", message = "Valor não pode ser menor que 0,01")
+	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal value;
 	
 	@Enumerated(EnumType.STRING)
@@ -53,11 +66,11 @@ public class Event {
 		this.name = name;
 	}
 
-	public int getCapacity() {
+	public BigDecimal getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(int capacity) {
+	public void setCapacity(BigDecimal capacity) {
 		this.capacity = capacity;
 	}
 
