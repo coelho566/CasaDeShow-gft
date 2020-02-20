@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +36,11 @@ public class EventController {
 	@RequestMapping
 	public ModelAndView evento() {
 		ModelAndView mv = new ModelAndView();
+		List<Event> listaEvento = eventService.listEvent();
 		
+		mv.addObject("listaEvento", listaEvento);
 		return mv;
-	}
+	}	
 	
 	@RequestMapping("/cadastraEvento")
 	public ModelAndView cadastra() {

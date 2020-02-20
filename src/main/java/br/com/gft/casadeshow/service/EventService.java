@@ -3,6 +3,7 @@ package br.com.gft.casadeshow.service;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,9 @@ public class EventService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Event> listEvent(){
+		return repository.findAll();
 	}
 }

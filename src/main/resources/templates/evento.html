@@ -24,13 +24,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
+    <tr th:each="evento : ${listaEvento}">
+     <td th:text="${evento.name}"></td>
+     <td th:text="${evento.capacity}"></td>
+     <td th:text="${{evento.dateEvent}}"></td>
+     <td th:text="|R$ ${{evento.value}}|"></td>
+     <td th:text="${evento.houseShow.name}"></td>
+     <td th:text="${evento.category.description}"></td>
      <td></td>
      <td></td>
     </tr>
