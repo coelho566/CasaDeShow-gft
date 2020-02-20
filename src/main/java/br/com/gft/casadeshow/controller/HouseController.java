@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,21 +26,20 @@ public class HouseController {
 	
 	@RequestMapping
 	private ModelAndView casa() {
-		House house = new House();
 		List<House> listHouse = service.listaCasa();
 		
 		ModelAndView mv = new ModelAndView("cadastraCasa");
 
-		mv.addObject("casa", house);
+		mv.addObject(new House());
 		mv.addObject("listaCasa", listHouse);
 		return mv;
 	}
 
 	@PostMapping("/saveHouse")
-	private ModelAndView salvarCasa(@Validated House house, RedirectAttributes attributes, Errors errors) {
+	private ModelAndView salvarCasa(@Validated House house,BindingResult errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("cadastraCasa");
 		
-		if(errors.hasErrors() == true) {
+		if(errors.hasErrors()) {
 			return mv;
 		}else if(service.hasHouse(house) == true) {
 			mv.addObject("erro", "Casa de show já existe!");

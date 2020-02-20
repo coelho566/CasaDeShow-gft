@@ -7,8 +7,8 @@
 <section layout:fragment="conteudo" class="container"><br><br>
 	<div layout:insert="msgErro"></div>
 	<div layout:insert="msgSucesso"></div>
-		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/casa/saveHouse}" method="POST" >
-								
+		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/casa/saveHouse}" method="POST" th:object="${house}" >
+			<div th:insert="msgAviso"></div>
 			<span class="login100-form-title p-b-32">
 					Cadastrar casa de show
 			</span>
