@@ -44,8 +44,10 @@ public class EventController {
 	
 	@RequestMapping("/cadastraEvento")
 	public ModelAndView cadastra() {
+		List<House> listaCasa = houseService.listaCasa();
 		ModelAndView mv = new ModelAndView("eventoCadastro");
 		mv.addObject(new Event());
+		mv.addObject("listaCasa", listaCasa);
 		return mv;
 	}
 	

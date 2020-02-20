@@ -7,6 +7,11 @@
 <section layout:fragment="conteudo" class="container"><br>
 	<div layout:insert="msgErro"></div>
 	<div layout:insert="msgSucesso"></div>
+	<div th:if="${#lists.isEmpty(listaCasa)}" style="margin-top: 200px; color: red;"><h3>Para cadastrar um evento, é necessario pelo menos uma 
+	casa de show cadastrada!
+	</h3></div>
+	
+	<div th:if="${!#lists.isEmpty(listaCasa)}">
 		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/evento/saveEvent}" enctype="multipart/form-data" method="POST" th:object="${event}" >
 		<div th:insert="msgAviso"></div>							
 			<span class="login100-form-title p-b-32">
@@ -78,6 +83,6 @@
 				</button>
 			</div>
 		</form><br><br>
-
+	</div>
 </section>
 </html>
