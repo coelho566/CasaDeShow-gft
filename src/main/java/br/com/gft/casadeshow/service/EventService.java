@@ -48,4 +48,23 @@ public class EventService {
 	public List<Event> listEvent(){
 		return repository.findAll();
 	}
+	
+	public Event get(Long id) {
+		return repository.findById(id).get();
+	}
+	
+	public void editar(Long id, Event event, MultipartFile file) {
+
+		if (file.getSize() == 0) {
+			Event eventos = this.get(id);
+			event.setFoto(eventos.getFoto());
+		} else {
+			String nameFile = StringUtils.cleanPath(file.getOriginalFilename());
+			event.setFoto(nameFile);
+			this.UploadFile(file);
+		}
+
+		repository.save(event);
+
+	}
 }

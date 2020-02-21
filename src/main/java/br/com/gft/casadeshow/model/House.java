@@ -1,12 +1,16 @@
 package br.com.gft.casadeshow.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
-@Entity
+@Entity 
 public class House {
 
 	@Id
@@ -18,6 +22,9 @@ public class House {
 	
 	@NotEmpty(message = "Preencha o campo endereço!")
 	private String street;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Event> event;
 
 	public Long getId() {
 		return id;
@@ -42,5 +49,15 @@ public class House {
 	public void setStreet(String street) {
 		this.street = street;
 	}
+
+	public List<Event> getEvent() {
+		return event;
+	}
+
+	public void setEvent(List<Event> event) {
+		this.event = event;
+	}
+	
+	
 
 }

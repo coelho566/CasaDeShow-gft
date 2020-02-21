@@ -3,12 +3,14 @@ package br.com.gft.casadeshow.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +21,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
-@Entity
+@Entity 
 public class Event {
 
 	@Id
@@ -29,8 +31,8 @@ public class Event {
 	@NotEmpty(message = "Preencha o campo nome")
 	private String name;
 	
-	@NotNull(message = "Campo capacidade não pode esta vazio")
-	private BigDecimal capacity;
+	@NotEmpty(message = "Campo capacidade não pode esta vazio")
+	private String capacity;
 	
 	@NotNull(message = "Preencha o campo data")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -66,11 +68,13 @@ public class Event {
 		this.name = name;
 	}
 
-	public BigDecimal getCapacity() {
+	
+
+	public String getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(BigDecimal capacity) {
+	public void setCapacity(String capacity) {
 		this.capacity = capacity;
 	}
 

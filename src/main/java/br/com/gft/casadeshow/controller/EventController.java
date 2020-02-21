@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,6 +62,30 @@ public class EventController {
 		attributes.addFlashAttribute("sucesso", "Evento cadastrado com sucesso!");
 	
 		
+		return new ModelAndView("redirect:/evento");
+	}
+	
+	@RequestMapping("editar/{id}")
+	public ModelAndView editarEvento(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView("editarEvento");
+		Event evento = eventService.get(id);
+		
+		mv.addObject("event", evento);
+		
+		return mv;
+	}
+	
+	@PostMapping("/editEvent/{id}")
+	public ModelAndView saveEdit(@PathVariable Long id, @RequestParam MultipartFile file, @Validated Event event, Errors errors, RedirectAttributes attributes ) {
+		ModelAndView mv = new ModelAndView("editarEvento");
+
+		if (errors.hasErrors()) {
+			return mv;
+		}
+		
+		eventService.editar(id, event, file);
+		
+		attributes.addFlashAttribute("sucesso", "Evento editado com sucesso!");
 		return new ModelAndView("redirect:/evento");
 	}
 	

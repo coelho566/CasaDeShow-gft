@@ -1,9 +1,9 @@
 package br.com.gft.casadeshow.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import br.com.gft.casadeshow.model.House;
@@ -45,6 +45,13 @@ public class HouseService {
 	}
 	
 	public void deletaCasa(Long id) {
+		
+		Optional<House> house = repository.findById(id);
+		
+		if(house.isPresent()) {
+		
 		repository.deleteById(id);
+		}
+		
 	}
 }

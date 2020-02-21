@@ -6,53 +6,29 @@
 	layout:decorator="TemplatePadrao">
 
 
-<section layout:fragment="conteudo">
-   <div class="container">
-     <div layout:insert="msgSucesso"></div>
-    <div class="card ">
-        <h5 class="card-header text-white bg-dark ">Nome do show</h5>
-        <div class="card-body">
-            <div class="container">
-                <div class="row">
-                  <div class="col-sm">
-                    <div class="list-group">
-                        <li class="list-group-item">Preço do Ingresso:</li>
-                        <li class="list-group-item">Data:</li>
-                        <li class="list-group-item">Local:</li>
-                        <li class="list-group-item">Ingressos:</li>
-                    </div><br>
-                    <button type="button" class="btn btn-dark">Comprar</button>
-                  </div>
-                  <div class="col-sm text-center">
-                    <img class="card-img-top " style="width: 18rem" src="/imagens/coringa.jpg" alt="Imagem de capa do card">
-                  </div>
-                </div>
-              </div>
-        </div>
-      </div><br>
-
-      <div class="card">
-        <h5 class="card-header text-white bg-dark ">Nome do show</h5>
-        <div class="card-body">
-            <div class="container">
-                <div class="row">
-                  <div class="col-sm">
-                    <div class="list-group">
-                        <li class="list-group-item">Preço do Ingresso:</li>
-                        <li class="list-group-item">Data:</li>
-                        <li class="list-group-item">Local:</li>
-                        <li class="list-group-item">Ingressos:</li>
-                    </div><br>
-                    <button type="button" class="btn btn-dark">Comprar</button>
-                  </div>
-                  <div class="col-sm text-center">
-                    <img class="card-img-top " style="width: 18rem" src="/imagens/coringa.jpg" alt="Imagem de capa do card">
-                  </div>
-                </div>
-              </div>
-        </div>
+<section layout:fragment="conteudo"><br><br>
+  <div class="container" >
+    <div class="row">
+      <div class="col-sm-4 " th:each="evento : ${listaEvento}" style="margin-bottom: 25px;">
+       <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+		  <img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${evento.foto})}" style="height: 13rem;">
+		  <div class="card-body">
+		    <h5 class="card-title" th:text="${evento.name}"></h5>
+		   <ul>
+		   	<li><strong>Data do Show: </strong><span th:text="${{evento.dateEvent}}"></span></li>
+		   </ul>
+		   
+		   
+		    <a href="#" class="btn btn-primary">Visitar</a>
+		  </div>
+		</div>
       </div>
+      
     </div>
+
+
+
+  </div>
 </section>
 
 </html>
