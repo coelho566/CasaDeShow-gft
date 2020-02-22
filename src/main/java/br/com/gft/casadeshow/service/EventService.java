@@ -45,6 +45,10 @@ public class EventService {
 		}
 	}
 	
+	public void deleteEvent(Long id) {
+		repository.deleteById(id);
+	}
+	
 	public List<Event> listEvent(){
 		return repository.findAll();
 	}

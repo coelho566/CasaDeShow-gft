@@ -448,6 +448,15 @@ iframe {
   right: 18px;
 }
 
+.bg-fundo{
+	height:100%;
+	width:100%;
+	background-image: url("../imagens/foto2.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position: bottom center;
+}
+
 .alert-validate:hover:before {
   visibility: visible;
   opacity: 1;

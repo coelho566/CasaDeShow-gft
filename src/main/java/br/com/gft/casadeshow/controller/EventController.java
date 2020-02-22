@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,7 +53,7 @@ public class EventController {
 	}
 	
 	@PostMapping("/saveEvent")
-	public ModelAndView saveEvent(@RequestParam MultipartFile file,@Validated  Event event, Errors errors, RedirectAttributes attributes) {
+	public ModelAndView saveEvent(@RequestParam MultipartFile file, @Validated  Event event, Errors errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("eventoCadastro");
 		
 		if(errors.hasErrors()) {
@@ -87,6 +88,15 @@ public class EventController {
 		
 		attributes.addFlashAttribute("sucesso", "Evento editado com sucesso!");
 		return new ModelAndView("redirect:/evento");
+	}
+	
+	@GetMapping("/delete/{id}")
+	public ModelAndView deleteEvent(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView("evento");
+		
+		eventService.deleteEvent(id);
+		
+		return mv;
 	}
 	
 	

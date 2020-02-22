@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity 
 public class House {
@@ -23,7 +26,8 @@ public class House {
 	@NotEmpty(message = "Preencha o campo endereço!")
 	private String street;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, orphanRemoval = true )
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Event> event;
 
 	public Long getId() {
@@ -57,7 +61,6 @@ public class House {
 	public void setEvent(List<Event> event) {
 		this.event = event;
 	}
-	
-	
+
 
 }

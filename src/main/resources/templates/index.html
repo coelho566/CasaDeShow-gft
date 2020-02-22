@@ -6,18 +6,28 @@
 	layout:decorator="TemplatePadrao">
 
 
-<section layout:fragment="conteudo"><br><br>
+<section layout:fragment="conteudo"><br>
+	
+  
+ 	<div class="jumbotron jumbotron-fluid bg-fundo">
+  <div class="container text-center">
+    <h1 class="display-4" style="color: #fff;">Bem vindo [[${#httpServletRequest.remoteUser}]] ! </h1>
+ 
+  </div>
+
+  </div>
+
   <div class="container" >
 	<div layout:insert="msgSucesso"></div>
     <div class="row">
-      <div class="col-sm-4 " th:each="evento : ${listaEvento}" style="margin-bottom: 25px;">
+      <div class="col-sm-4 " th:each="evento : ${listaEvento}" style="margin-bottom: 20px;">
        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
 		  <img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${evento.foto})}" style="height: 13rem;">
 		  <div class="card-body">
 		    <h5 class="card-title text-center"  th:text="${evento.name}"></h5>
 		   <ul>
 		   	<li><strong>Data do Show: </strong><span th:text="${{evento.dateEvent}}"></span></li>
-		   	<li><strong>Capacidade: </strong><span th:text="${evento.capacity}"></span></li>
+		   	<li><strong>Ingressos: </strong><span th:text="${evento.capacity}"></span></li>
 		   	<li><strong>Preço: </strong><span th:text="|R$ ${{evento.value}}|"></span></li>
 		   	<li><strong>Local: </strong><span th:text="${evento.houseShow.name}"></span></li>
 		   	
