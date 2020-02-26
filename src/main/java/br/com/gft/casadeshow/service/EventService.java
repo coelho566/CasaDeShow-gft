@@ -54,7 +54,7 @@ public class EventService {
 		}
 	}
 	
-	public void deleteEvent(Long id) {
+	public void deleteEvent(Integer id) {
 		repository.delete(this.get(id));;
 	}
 	
@@ -62,11 +62,11 @@ public class EventService {
 		return repository.findAll();
 	}
 	
-	public Event get(Long id) {
+	public Event get(Integer id) {
 		return repository.findById(id).get();
 	}
 	
-	public void editar(Long id, Event event, MultipartFile file) {
+	public void editar(Integer id, Event event, MultipartFile file) {
 
 		if (file.getSize() == 0) {
 			Event eventos = this.get(id);

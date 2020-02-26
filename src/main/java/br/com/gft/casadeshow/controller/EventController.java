@@ -76,7 +76,7 @@ public class EventController {
 	}
 
 	@RequestMapping("editar/{id}")
-	public ModelAndView editarEvento(@PathVariable Long id) {
+	public ModelAndView editarEvento(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView("editarEvento");
 		Event evento = eventService.get(id);
 
@@ -87,7 +87,7 @@ public class EventController {
 	}
 
 	@PostMapping("/editEvent/{id}")
-	public ModelAndView saveEdit(@PathVariable Long id, @RequestParam MultipartFile file, @Validated Event event,
+	public ModelAndView saveEdit(@PathVariable Integer id, @RequestParam MultipartFile file, @Validated Event event,
 			Errors errors, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("editarEvento");
 
@@ -102,7 +102,7 @@ public class EventController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public ModelAndView deleteEvent(@PathVariable Long id) {
+	public ModelAndView deleteEvent(@PathVariable Integer id) {
 		ModelAndView mv = new ModelAndView("evento");
 
 		eventService.deleteEvent(id);

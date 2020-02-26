@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="TemplatePadrao">
+
+
+<section layout:fragment="conteudo"><br>
+	
+  
+ <div class="jumbotron jumbotron-fluid bg-fundo">
+  <div class="container text-center">
+    <h1 class="display-4" style="color: #fff;">Bem vindo [[${#httpServletRequest.remoteUser}]] ! </h1>
+  </div>
+ </div>
+
+<div class="container" >
+	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Item</th>
+	      <th scope="col">Preço</th>
+	      <th scope="col">Quantidade</th>
+	      <th scope="col">Total</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="item : ${@carrinhoCompras.itens}">
+	      <td ><img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${item.event.foto})}" style="height: 5rem; width: 5rem;"></td>
+	      <td th:text="${item.event.name}"></td>
+	      <td th:text="|R$ ${{item.preco}}|"></td>
+	      <td>
+	      
+	      </td>
+	      <td></td>
+	    </tr>
+	
+	</table>	
+
+
+
+</div>
+</section>
+
+</html>

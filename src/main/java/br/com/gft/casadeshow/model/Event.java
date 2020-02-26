@@ -8,8 +8,6 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,8 +18,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,7 +27,7 @@ public class Event {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	@NotEmpty(message = "Preencha o campo nome")
 	private String name;
@@ -58,11 +54,11 @@ public class Event {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private House houseShow;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -121,8 +117,6 @@ public class Event {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -150,8 +144,7 @@ public class Event {
 	}
 
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
-		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco))
-				.findFirst().get().getValor();
+		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();
 	}
 
 }

@@ -455,6 +455,11 @@ iframe {
 	background-position: bottom center;
 }
 
+.btn-sair:hover{
+	background-color: transparent !important;
+	color: #000;
+}
+
 .alert-validate:hover:before {
   visibility: visible;
   opacity: 1;

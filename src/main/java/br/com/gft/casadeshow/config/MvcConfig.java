@@ -11,5 +11,15 @@ public class MvcConfig implements WebMvcConfigurer {
 		
 		registry.addViewController("/login").setViewName("login");
 	}
+	
+//	@Bean
+//	public InternalResourceViewResolver internalResourceViewResolver() {
+//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//	
+//		resolver.setExposedContextBeanNames("carrinhoCompras");
+//		
+//		return resolver;
+//	}
+	
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.gft.casadeshow.model.Event;
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, Long> {
+public interface EventRepository extends JpaRepository<Event, Integer> {
 	Event findByName(String name);
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 @Component
-@Scope(value = WebApplicationContext.SCOPE_SESSION)
+@Scope(value=WebApplicationContext.SCOPE_SESSION)
 public class CarrinhoCompras implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class CarrinhoCompras implements Serializable {
 	public void add(CarrinhoItem item) {
 		itens.put(item, getQuantidade(item) + 1);
 	}
-
+	
 	private Integer getQuantidade(CarrinhoItem item) {
 		
 		if(!itens.containsKey(item)) {

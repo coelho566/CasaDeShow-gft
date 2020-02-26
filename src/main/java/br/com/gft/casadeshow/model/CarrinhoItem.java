@@ -3,18 +3,18 @@ package br.com.gft.casadeshow.model;
 import java.math.BigDecimal;
 
 public class CarrinhoItem {
-	
+
 	private Event event;
 	private TipoPreco tipoPreco;
-	
+
 	public CarrinhoItem(Event event, TipoPreco tipoPreco) {
 
 		this.event = event;
 		this.tipoPreco = tipoPreco;
 	}
-	
+
 	public BigDecimal getPreco() {
-		return event.precoPara(tipoPreco);
+		return  event.precoPara(tipoPreco);
 	}
 
 	public Event getEvent() {
@@ -32,14 +32,13 @@ public class CarrinhoItem {
 	public void setTipoPreco(TipoPreco tipoPreco) {
 		this.tipoPreco = tipoPreco;
 	}
-	
-	
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
+		result = prime * result + ((tipoPreco == null) ? 0 : tipoPreco.hashCode());
 		return result;
 	}
 
@@ -57,10 +56,12 @@ public class CarrinhoItem {
 				return false;
 		} else if (!event.equals(other.event))
 			return false;
+		if (tipoPreco != other.tipoPreco)
+			return false;
 		return true;
 	}
 
 	public BigDecimal getTotal(int quantidade) {
-		return this.getPreco().multiply(new BigDecimal(quantidade));			
+		return this.getPreco().multiply(new BigDecimal(quantidade));
 	}
 }
