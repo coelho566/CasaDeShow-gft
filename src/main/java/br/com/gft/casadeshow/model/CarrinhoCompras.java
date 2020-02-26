@@ -14,9 +14,6 @@ import org.springframework.web.context.WebApplicationContext;
 @Scope(value = WebApplicationContext.SCOPE_SESSION)
 public class CarrinhoCompras implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<>();
