@@ -10,7 +10,7 @@
 		Lista de eventos
 	</span>
 	<div class="container-login100-form-btn">	
-	<a href="/evento/cadastraEvento" class="login100-form-btn">Cadastrar Evento</a>
+	<a href="/evento/cadastraEvento" class="login100-form-btn" style="color:fff; text-decoration: none; margin-bottom: 25px;">Cadastrar Evento</a>
 	</div>
 <table class="table table-hover table-bordered">
   <thead class="thead-dark">
@@ -18,7 +18,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Capacidade</th>
       <th scope="col">Data</th>
-      <th scope="col">Valor</th>
+      <th scope="col">Valores</th>
       <th scope="col">Local</th>
       <th scope="col">Categoria</th>
       <th scope="col">Editar</th>
@@ -26,11 +26,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr th:each="evento : ${listaEvento}">
+    <tr th:each="evento, status : ${listaEvento}">
      <td th:text="${evento.name}"></td>
      <td th:text="${evento.capacity}"></td>
      <td th:text="${{evento.dateEvent}}"></td>
-     <td th:text="|R$ ${{evento.value}}|"></td>
+     <td >
+     	<ul th:each="preco :${evento.precos}">
+     		<li>
+     		<strong th:text="${preco.tipo}"></strong> <span th:text="|R$ ${{preco.valor}}|"></span>
+     		</li>
+     	</ul>
+     </td>
      <td th:text="${evento.houseShow.name}"></td>
      <td th:text="${evento.category.description}"></td>
      <td><a th:href="@{/evento/editar/{id}(id=${evento.id})}" class="login50-form-btn" type="submit" style="color:fff; text-decoration: none;"><i class="far fa-edit"></i></a></td>

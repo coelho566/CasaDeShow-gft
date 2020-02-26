@@ -22,19 +22,22 @@
     <div class="row">
       <div class="col-sm-4 " th:each="evento : ${listaEvento}" style="margin-bottom: 20px;">
        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
-		  <img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${evento.foto})}" style="height: 13rem;">
+		  <img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${evento.foto})}" style="height: 11rem;">
 		  <div class="card-body">
 		    <h5 class="card-title text-center"  th:text="${evento.name}"></h5>
 		   <ul>
 		   	<li><strong>Data do Show: </strong><span th:text="${{evento.dateEvent}}"></span></li>
 		   	<li><strong>Ingressos: </strong><span th:text="${evento.capacity}"></span></li>
-		   	<li><strong>Preço: </strong><span th:text="|R$ ${{evento.value}}|"></span></li>
+		   <!--<li><strong>Preço: </strong><span th:text="|R$ ${{evento.value}}|"></span></li>-->
 		   	<li><strong>Local: </strong><span th:text="${evento.houseShow.name}"></span></li>
-		   	
 		   </ul>
-		   <a th:href="@{/casa/editar/{id}(id=${evento.id})}" class="login100-form-btn" type="submit" style="color:fff; text-decoration: none; margin-top: 10px;">Comprar</a>
+		   
+		   
+		   
+		   
+		   <a class="login100-form-btn" data-toggle="modal" data-target="#ExemploModalCentralizado" style="text-decoration: none; margin-top: 10px;">Detalhes</a>
 		  </div>
-		</div>
+		</div>		
       </div>
       
     </div>

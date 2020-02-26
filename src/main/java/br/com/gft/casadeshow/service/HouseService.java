@@ -50,7 +50,7 @@ public class HouseService {
 		
 		if(house.isPresent()) {
 		
-		repository.deleteById(id);
+		repository.delete(this.get(id));
 		}
 		
 	}

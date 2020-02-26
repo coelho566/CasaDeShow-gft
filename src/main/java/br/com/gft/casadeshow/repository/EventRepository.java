@@ -7,5 +7,5 @@ import br.com.gft.casadeshow.model.Event;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-
+	Event findByName(String name);
 }

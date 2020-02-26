@@ -33,6 +33,15 @@ public class EventService {
 		repository.save(event);
 	}
 	
+	public boolean hasEvent(Event event) {
+		
+		if(repository.findByName(event.getName()) != null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public void UploadFile(MultipartFile file) {
 
 		try {
@@ -46,7 +55,7 @@ public class EventService {
 	}
 	
 	public void deleteEvent(Long id) {
-		repository.deleteById(id);
+		repository.delete(this.get(id));;
 	}
 	
 	public List<Event> listEvent(){
