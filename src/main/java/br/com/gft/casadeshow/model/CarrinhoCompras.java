@@ -26,7 +26,7 @@ public class CarrinhoCompras implements Serializable {
 		itens.put(item, getQuantidade(item) + 1);
 	}
 	
-	private Integer getQuantidade(CarrinhoItem item) {
+	public Integer getQuantidade(CarrinhoItem item) {
 		
 		if(!itens.containsKey(item)) {
 			itens.put(item, 0);

@@ -16,27 +16,39 @@
  </div>
 
 <div class="container" >
-	<table class="table table-bordered">
-	  <thead>
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">Item</th>
-	      <th scope="col">Preço</th>
-	      <th scope="col">Quantidade</th>
-	      <th scope="col">Total</th>
+	<table class="table ">
+	  <thead class="thead-light">
+	    <tr class="text-center">
+	      <th ></th>
+	      <th  >Item</th>
+	      <th >Preço</th>
+	      <th >Quantidade</th>
+	      <th >Total</th>
+	      <th ></th>
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr th:each="item : ${@carrinhoCompras.itens}">
-	      <td ><img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${item.event.foto})}" style="height: 5rem; width: 5rem;"></td>
-	      <td th:text="${item.event.name}"></td>
-	      <td th:text="|R$ ${{item.preco}}|"></td>
-	      <td>
-	      
+	    <tr th:each="item : ${@carrinhoCompras.itens}" class="text-center">
+	      <td class="bg-light"><img class="card-img-top" th:attr="src=@{/imagens/{foto}(foto=${item.event.foto})}" style="height: 4rem; width: 8rem;"></td>
+	      <td class="align-middle bg-light" th:text="${item.event.name}"></td>
+	      <td class="align-middle">
+	      <ul>
+	      	<li th:text="${item.tipoPreco}"></li>
+	      	<li th:text="|R$ ${{item.preco}}|"></li>
+	      </ul>
 	      </td>
-	      <td></td>
+	      <td class="align-middle bg-light" th:text="${@carrinhoCompras.getQuantidade(item)}"></td>
+	      <td class="align-middle" th:text="|R$ ${@carrinhoCompras.getTotal(item)}|"></td>
+	      <td class="align-middle"><i class="fas fa-trash-alt"></i></td>
 	    </tr>
-	
+	</tbody>
+	<tfoot>
+	<tr>
+	<td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra" /></td>
+		<td class="bg-light text-center">R$ [[${@carrinhoCompras.total}]]</td>
+		<td></td>
+	</tr>
+	</tfoot>
 	</table>	
 
 

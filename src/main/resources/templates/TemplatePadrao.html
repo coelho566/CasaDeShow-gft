@@ -1,7 +1,8 @@
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,12 +36,12 @@
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item">
-          <a class="nav-link waves-effect waves-light " data-toggle="tooltip" data-placement="top" title="Carrinho">
-            <span>Bem vindo  <span sec:authentication="name"></span> ! </span>
+          <a class="nav-link waves-effect waves-light " data-toggle="tooltip" data-placement="top" title="Carrinho" >
+            <span>Bem vindo [[${#httpServletRequest.remoteUser}]] ! </span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-effect waves-light " data-toggle="tooltip" data-placement="top" title="Carrinho">
+          <a class="nav-link waves-effect waves-light " data-toggle="tooltip" data-placement="top" title="Carrinho" href="/carrinho/itens">
             <i class="fas fa-shopping-cart"></i> ([[${@carrinhoCompras.quantidade}]])
           </a>
         </li>
