@@ -47,7 +47,10 @@
 	<tfoot>
 	<tr >
 	<td colspan="3">
-	<button type="submit" name="checkout" class="btn btn-dark" >Finalizar Compra</button>
+	<form action="">
+		<input type="hidden" th:value="${@carrinhoCompras.itens}" name="itens">
+		<button type="submit" name="checkout" class="btn btn-dark" >Finalizar Compra</button>
+	</form>
 	</td>
 	
 		<td class="bg-light text-center align-middle">R$ [[${@carrinhoCompras.total}]]</td>

@@ -31,7 +31,7 @@ public class CarrinhoComprasController {
 		ModelAndView mv = new ModelAndView("redirect:/");
 		CarrinhoItem carrinhoItem = criaItem(produtoId, tipoPreco);
 		carrinho.add(carrinhoItem);
-		
+
 		carrinhoItem.getPreco();
 		
 		attributes.addFlashAttribute("sucesso", "Item adicionado no carrinho!");
@@ -55,6 +55,8 @@ public class CarrinhoComprasController {
 		
 		return mv;
 	}
+	
+	
 	
 	
 }
