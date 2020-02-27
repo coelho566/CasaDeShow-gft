@@ -8,6 +8,7 @@
 }
 a{
 	text-decoration: none;
+	color: #fff;
 }
 
 body, html {
@@ -338,9 +339,8 @@ iframe {
 
 .login100-form-btn {
   font-size: 16px;
-  color: #fff;
+  color: #fff !important;
   line-height: 1.2;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -353,7 +353,6 @@ iframe {
   height: 55px;
   background-color: #333333;
   border-radius: 27px;
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -367,13 +366,11 @@ iframe {
  .login50-form-btn {
   font-size: 16px;
   color: #fff;
-  line-height: 1.2;
-  text-decoration:none;	
-  
+  line-height: 1.2; 
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 10px;
   min-width: 30px;
   height: 32px;
   background-color: #333333;
@@ -447,6 +444,20 @@ iframe {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 18px;
+}
+
+.bg-fundo{
+	height:100%;
+	width:100%;
+	background-image: url("../imagens/foto2.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position: bottom center;
+}
+
+.btn-sair:hover{
+	background-color: transparent !important;
+	color: #000;
 }
 
 .alert-validate:hover:before {

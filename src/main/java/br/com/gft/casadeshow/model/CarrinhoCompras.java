@@ -52,4 +52,5 @@ public class CarrinhoCompras implements Serializable {
 		return total ;
 	}
 	
+	
 }

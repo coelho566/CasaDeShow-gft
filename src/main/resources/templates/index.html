@@ -30,21 +30,7 @@
 		   	<li><strong>Ingressos: </strong><span th:text="${evento.capacity}"></span></li>
 		   	<li><strong>Local: </strong><span th:text="${evento.houseShow.name}"></span></li>
 		   </ul>
-		   <form action="/carrinho/add">
-		   	<input type="hidden" th:value="${evento.id}" name="produtoId">
-		   	<ul th:each="preco : ${evento.precos}">
-		   		<li>
-		   		<strong th:text="${preco.tipo}"></strong>
-		   		<span th:text="|R$ ${{preco.valor}}|"></span>
-		   		<input type="radio" th:value="${preco.tipo}" name="tipoPreco" checked >
-		   		</li>
-		   	</ul>
-		   
-		   <button class="login100-form-btn" type="submit" style="text-decoration: none; margin: 5px auto;">Comprar</button>
-		   </form>
-		   
-		   
-		   
+		   <a class="login100-form-btn" th:href="@{/evento/detalhe/{id}(id=${evento.id})}" style="text-decoration: none; margin: 10px auto;">Detalhes</a>		   
 		  </div>
 		</div>		
       </div>

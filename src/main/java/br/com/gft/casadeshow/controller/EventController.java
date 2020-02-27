@@ -102,12 +102,22 @@ public class EventController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public ModelAndView deleteEvent(@PathVariable Integer id) {
+	public ModelAndView deleteEvent(@PathVariable Integer id, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("evento");
-
 		eventService.deleteEvent(id);
 
+		attributes.addFlashAttribute("sucesso", "Evento excluido com sucesso");
 		return mv;
+	}
+	
+	@GetMapping("/detalhe/{id}")
+	public ModelAndView detalhe(@PathVariable Integer id) {
+		Event event = eventService.get(id);
+		ModelAndView mv = new ModelAndView("detalhes");
+		mv.addObject("evento", event);
+		
+		return mv;
+		
 	}
 
 	@ModelAttribute("tipoPreco")

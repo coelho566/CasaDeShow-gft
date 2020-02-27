@@ -386,6 +386,17 @@ iframe {
   background-color: #57b846;
 }
 
+.form-preco{
+	display: flex;
+}
+.form-preco ul{
+	margin-right: 20px;
+	margin-top: 10px;
+}
+
+.form-preco button{
+	margin-left: 90px;
+}
 
 /*------------------------------------------------------------------
 [ Alert validate ]*/

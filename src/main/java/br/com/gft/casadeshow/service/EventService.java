@@ -33,6 +33,10 @@ public class EventService {
 		repository.save(event);
 	}
 	
+	public void save(Event event) {
+		repository.save(event);
+	}
+	
 	public boolean hasEvent(Event event) {
 		
 		if(repository.findByName(event.getName()) != null) {

@@ -6,15 +6,17 @@
       layout:decorator="TemplatePadrao">
 <section layout:fragment="conteudo" class="container"><br>
 	<div layout:insert="msgErro"></div>
+	<div layout:insert="msgSucesso"></div>
 	<div th:if="${#lists.isEmpty(listaCasa)}" style="margin-top: 200px; color: red;"><h3>Para cadastrar um evento, é necessario pelo menos uma 
 	casa de show cadastrada!
 	</h3></div>
 	
 	<div th:if="${!#lists.isEmpty(listaCasa)}">
-		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/evento/saveEvent}" enctype="multipart/form-data" method="POST" th:object="${event}" >
+		<form class="login100-form validate-form flex-sb flex-w" th:action="@{/evento/editEvent/{id}(id=*{id})}" enctype="multipart/form-data" method="POST" th:object="${event}" >
+		<input type="hidden" th:field="*{id}">
 		<div th:insert="msgAviso"></div>							
 			<span class="login100-form-title p-b-32">
-				Cadastrar evento
+				 Editar evento
 			</span>
 
 			<span class="txt1 p-b-11">
@@ -47,7 +49,7 @@
 			<div style="width: 100%;" th:each="tipos, status : ${tipoPreco}" >
 			<span class="txt1 p-b-11" th:text="${tipos}"></span>
 				<div class="wrap-input100 validate-input m-b-36">
-					<input class="input100" type="text" th:name="'precos['+${status.index}+'].valor'" >
+					<input class="input100" type="text" th:name="'precos['+${status.index}+'].valor'" required >
 					<input class="input100" type="hidden" th:name="'precos['+${status.index}+'].tipo'" th:value="${tipos}" >
 				</div>
 			</div>
@@ -58,7 +60,18 @@
 			<div class="wrap-input100 validate-input m-b-36">
 			<input  type="file" name="file" >
 				<span class="focus-input100"></span>
+				
 			</div>
+			
+			<div class="wrap-input100 validate-input m-b-36" style="border: none;">
+				  <div class="card bg-light mb-3" style="max-width: 18rem;">
+					  <div class="card-header">Foto atual</div>
+					  <div class="card-body">
+					   <img class="img-thumbnail" th:attr="src=@{/imagens/{foto}(foto=*{foto})}" style="width: 18rem;" >
+					  </div>
+				 </div>			
+			</div>
+		
 			
 			<span class="txt1 p-b-11">
 					Local do show
@@ -67,7 +80,7 @@
 				<option></option>
 				<option th:each="casa : ${listaCasa}" th:value="${casa.id}" th:text="${casa.name}" th:field="*{houseShow}"  ></option>
 			</select>
-					
+			
 			<span class="txt1 p-b-11">
 					Categoria
 			</span>
@@ -79,7 +92,7 @@
 				
 			<div class="container-login100-form-btn">
 				<button class="login100-form-btn" type="submit">
-					Cadastrar
+					Salvar
 				</button>
 			</div>
 		</form><br><br>

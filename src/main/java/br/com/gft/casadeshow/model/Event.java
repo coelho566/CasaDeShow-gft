@@ -32,8 +32,8 @@ public class Event {
 	@NotEmpty(message = "Preencha o campo nome")
 	private String name;
 
-	@NotEmpty(message = "Campo capacidade não pode esta vazio")
-	private String capacity;
+	@NotNull(message = "Campo capacidade não pode esta vazio")
+	private int capacity;
 
 	@NotNull(message = "Preencha o campo data")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -70,11 +70,12 @@ public class Event {
 		this.name = name;
 	}
 
-	public String getCapacity() {
+
+	public int getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(String capacity) {
+	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
 

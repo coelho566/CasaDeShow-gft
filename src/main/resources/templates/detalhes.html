@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="TemplatePadrao">
+
+
+<section layout:fragment="conteudo"><br>
+	
+ <div class="jumbotron jumbotron-fluid bg-fundo">
+  <div class="container text-center">
+    <h1 class="display-4" style="color: #fff;">Bem vindo [[${#httpServletRequest.remoteUser}]] ! </h1>
+  </div>
+ </div>
+
+<div class="container" >
+	<span class="login100-form-title p-b-32">
+	Detalhes do ingresso
+</span>
+	<div class="card text-center">
+	  <div class="card-header">
+	    <h3 th:text="${evento.name}"></h3>
+	  </div>
+	  <div class="card-body">
+	  	<div class="container">
+		  <div class="row">
+		    <div class="col-sm">
+		      <strong>Data do Show</strong><br>
+		      <span th:text="${{evento.dateEvent}}"></span>
+		    </div>
+		    <div class="col-sm">
+		   		<strong>Horario</strong><br>
+		      	<span>22:00</span>
+		    </div>
+		</div>
+	  </div><br>
+	  <div class="card-footer text-muted ">
+	    <div class="container ">
+		  <div class="row ">
+		    <div class="col-sm-4">
+		    <div style="margin-top: 10px;">
+		      <strong>Ingressos restantes: </strong><span th:text="${evento.capacity}"></span>
+		    </div>
+		    </div>
+		    <div class="col-sm-8">
+		      
+		    <form action="/carrinho/add" class="form-preco">
+			   	<input type="hidden" th:value="${evento.id}" name="produtoId">
+			   	<ul th:each="preco : ${evento.precos}">
+			   		<li>
+			   		<strong th:text="${preco.tipo}"></strong>
+			   		<span th:text="|R$ ${{preco.valor}}|"></span>
+			   		<input type="radio" th:value="${preco.tipo}" name="tipoPreco" checked >
+			   		</li>
+			   	</ul>
+		   
+		      <button type="submit" class="btn btn-dark">Comprar</button>
+		   </form> 
+		 
+		    </div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	</div>
+</div>
+</section>
+
+</html>

@@ -1,7 +1,8 @@
 
 (function ($) {
     "use strict";
-
+    $('.date').mask('00/00/0000');
+    $('.money2').mask("#.##0,00", {reverse: true});
     var showPass = 0;
     $('.btn-show-pass').on('click', function(){
         if(showPass == 0) {
@@ -54,5 +55,4 @@
     });
     
     
-
 })(jQuery);

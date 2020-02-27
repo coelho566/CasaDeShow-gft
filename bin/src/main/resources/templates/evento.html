@@ -9,14 +9,16 @@
 	<span class="login100-form-title p-b-32">
 		Lista de eventos
 	</span>
-<a href="/evento/cadastraEvento">Cadastrar Evento</a>
+	<div class="container-login100-form-btn">	
+	<a href="/evento/cadastraEvento" class="login100-form-btn" style="color:fff; text-decoration: none; margin-bottom: 25px;">Cadastrar Evento</a>
+	</div>
 <table class="table table-hover table-bordered">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Capacidade</th>
       <th scope="col">Data</th>
-      <th scope="col">Valor</th>
+      <th scope="col">Valores</th>
       <th scope="col">Local</th>
       <th scope="col">Categoria</th>
       <th scope="col">Editar</th>
@@ -24,15 +26,48 @@
     </tr>
   </thead>
   <tbody>
-    <tr th:each="evento : ${listaEvento}">
+    <tr th:each="evento, status : ${listaEvento}">
      <td th:text="${evento.name}"></td>
      <td th:text="${evento.capacity}"></td>
      <td th:text="${{evento.dateEvent}}"></td>
-     <td th:text="|R$ ${{evento.value}}|"></td>
+     <td >
+     	<ul th:each="preco :${evento.precos}">
+     		<li>
+     		<strong th:text="${preco.tipo}"></strong> <span th:text="|R$ ${{preco.valor}}|"></span>
+     		</li>
+     	</ul>
+     </td>
      <td th:text="${evento.houseShow.name}"></td>
      <td th:text="${evento.category.description}"></td>
-     <td></td>
-     <td></td>
+     <td><a th:href="@{/evento/editar/{id}(id=${evento.id})}" class="login50-form-btn" type="submit" style="color:fff; text-decoration: none;"><i class="far fa-edit"></i></a></td>
+     <td>
+     <a data-toggle="modal" data-target="#modalExcluir" th:attr="data-codigo=${evento.id}, data-descricao=${evento.name}" rel="tooltip" data-placement="top" 
+      title="Excluir" class="login50-form-btn" style="color:fff;" ><i class="far fa-trash-alt"></i></a> 
+     </td>
+     <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  
+  <form th:attr="data-url-base='/casa/del'" method="POST">
+  <input type="hidden" name="_method" value="DELETE"/>
+  
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <a class="btn btn-danger" th:href="@{/evento/delete/{id}(id=${evento.id})}">Excluir</a>
+      </div>
+    </div>
+   </form> 
+  </div>
+</div>
     </tr>
     <tr>
     	<td colspan="8" th:if="${#lists.isEmpty(listaEvento)}">Nenhum evento cadastrado</td>

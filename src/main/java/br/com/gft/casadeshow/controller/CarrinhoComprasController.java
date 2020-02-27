@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.gft.casadeshow.model.CarrinhoCompras;
 import br.com.gft.casadeshow.model.CarrinhoItem;
@@ -26,18 +27,24 @@ public class CarrinhoComprasController {
 	private CarrinhoCompras carrinho;
 	
 	@RequestMapping("/add")
-	public ModelAndView addItem(Integer produtoId, TipoPreco tipoPreco ) {
+	public ModelAndView addItem(Integer produtoId, TipoPreco tipoPreco, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("redirect:/");
 		CarrinhoItem carrinhoItem = criaItem(produtoId, tipoPreco);
 		carrinho.add(carrinhoItem);
 		
 		carrinhoItem.getPreco();
 		
+		attributes.addFlashAttribute("sucesso", "Item adicionado no carrinho!");
+		
 		return mv;
 	}
 	
 	private CarrinhoItem criaItem(Integer produtoId, TipoPreco tipoPreco) {
 		Event event = this.service.get(produtoId);
+		int qtdAtual = event.getCapacity()-1;
+		event.setCapacity(qtdAtual);
+		service.save(event);
+		
 		CarrinhoItem carrinhoItem = new CarrinhoItem(event, tipoPreco);
 		return carrinhoItem;
 	}
@@ -48,4 +55,6 @@ public class CarrinhoComprasController {
 		
 		return mv;
 	}
+	
+	
 }
