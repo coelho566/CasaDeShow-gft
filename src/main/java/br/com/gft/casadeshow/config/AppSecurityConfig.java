@@ -10,8 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -36,7 +34,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.authorizeRequests()
 		.antMatchers("/css/**", "/js/**", "/imagens/**").permitAll()
-		.antMatchers("/").permitAll()
+		.antMatchers("/evento", "/casa/**").hasAnyRole("ADMIN")
 		.antMatchers("/cadastro").permitAll()
 		.antMatchers("/saveUser").permitAll()
 		.anyRequest().authenticated()

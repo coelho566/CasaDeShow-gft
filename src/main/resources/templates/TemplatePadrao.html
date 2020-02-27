@@ -24,10 +24,10 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(página atual)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
           <a class="nav-link" href="/casa">Casa de Show</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
           <a class="nav-link" href="/evento">Eventos</a>
         </li>
         <li class="nav-item">

@@ -17,15 +17,15 @@ import br.com.gft.casadeshow.service.EventService;
 
 @Controller
 @RequestMapping("/carrinho")
-@Scope(value=WebApplicationContext.SCOPE_REQUEST)
+@Scope(value = WebApplicationContext.SCOPE_REQUEST)
 public class CarrinhoComprasController {
-	
+
 	@Autowired
 	private EventService service;
-	
+
 	@Autowired
 	private CarrinhoCompras carrinho;
-	
+
 	@RequestMapping("/add")
 	public ModelAndView addItem(Integer produtoId, TipoPreco tipoPreco, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("redirect:/");
@@ -33,30 +33,34 @@ public class CarrinhoComprasController {
 		carrinho.add(carrinhoItem);
 
 		carrinhoItem.getPreco();
-		
+
 		attributes.addFlashAttribute("sucesso", "Item adicionado no carrinho!");
-		
+
 		return mv;
 	}
-	
+
 	private CarrinhoItem criaItem(Integer produtoId, TipoPreco tipoPreco) {
 		Event event = this.service.get(produtoId);
-		int qtdAtual = event.getCapacity()-1;
+		int qtdAtual = event.getCapacity() - 1;
 		event.setCapacity(qtdAtual);
 		service.save(event);
-		
+
 		CarrinhoItem carrinhoItem = new CarrinhoItem(event, tipoPreco);
 		return carrinhoItem;
 	}
-	
-	@RequestMapping(value = "/itens", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/itens", method = RequestMethod.GET)
 	public ModelAndView itens() {
 		ModelAndView mv = new ModelAndView("itens");
-		
+
 		return mv;
 	}
-	
-	
-	
-	
+
+	@RequestMapping("/finalizar")
+	public ModelAndView finalizar() {
+		ModelAndView mv = new ModelAndView("redirect:/");
+		System.out.println(carrinho.getItens().isEmpty());
+		return mv;
+	}
+
 }

@@ -103,7 +103,7 @@ public class EventController {
 
 	@GetMapping("/delete/{id}")
 	public ModelAndView deleteEvent(@PathVariable Integer id, RedirectAttributes attributes) {
-		ModelAndView mv = new ModelAndView("evento");
+		ModelAndView mv = new ModelAndView("redirect:/");
 		eventService.deleteEvent(id);
 
 		attributes.addFlashAttribute("sucesso", "Evento excluido com sucesso");

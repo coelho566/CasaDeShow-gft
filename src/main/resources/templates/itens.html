@@ -47,8 +47,8 @@
 	<tfoot>
 	<tr >
 	<td colspan="3">
-	<form action="">
-		<input type="hidden" th:value="${@carrinhoCompras.itens}" name="itens">
+	<form action="/carrinho/finalizar">
+		<input type="hidden"  name="itens">
 		<button type="submit" name="checkout" class="btn btn-dark" >Finalizar Compra</button>
 	</form>
 	</td>
