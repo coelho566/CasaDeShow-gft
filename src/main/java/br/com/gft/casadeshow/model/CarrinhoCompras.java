@@ -51,6 +51,13 @@ public class CarrinhoCompras implements Serializable {
 		}
 		return total ;
 	}
-	
+
+	public void remover(Integer produtoId, TipoPreco tipoPreco) {
+		
+		Event produto = new Event();
+		produto.setId(produtoId);
+		this.itens.remove(new CarrinhoItem(produto, tipoPreco));
+		
+	}
 	
 }

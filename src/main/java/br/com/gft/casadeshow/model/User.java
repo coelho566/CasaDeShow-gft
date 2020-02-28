@@ -8,10 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.validation.constraints.NotEmpty;
-
-
 
 @Entity
 public class User {
@@ -19,16 +16,16 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotEmpty(message = "Preencha o campo Usuário")
 	private String username;
-	
+
 	@NotEmpty(message = "Preencha o campo E-mail")
 	private String email;
-	
+
 	@NotEmpty(message = "Preencha o campo Senha")
 	private String password;
-	
+
 	private String roles = "";
 
 	public Long getId() {
@@ -62,7 +59,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}

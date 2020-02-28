@@ -27,6 +27,7 @@
 	      <th >Preço</th>
 	      <th >Quantidade</th>
 	      <th >Total</th>
+	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -41,7 +42,13 @@
 	      </td>
 	      <td class="align-middle bg-light" th:text="${@carrinhoCompras.getQuantidade(item)}"></td>
 	      <td class="align-middle" th:text="|R$ ${@carrinhoCompras.getTotal(item)}|"></td>
-	     
+	     <td>
+	      <form action="/carrinho/remover" class="form-preco">
+			   	<input type="hidden" th:value="${item.event.id}" name="produtoId">
+			   		<input type="hidden" th:value="${item.tipoPreco}" name="tipoPreco" checked >
+		      <button type="submit" class="btn btn-dark"><i class="fas fa-trash-alt"></i></button>
+		   </form> 
+	     </td>
 	    </tr>
 	</tbody>
 	<tfoot>
@@ -58,7 +65,7 @@
 	</tr>
 	</tfoot>
 	</table>	
-
+<div layout:insert="msgErro"></div>
 
 
 </div>

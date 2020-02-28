@@ -47,7 +47,7 @@
 			<div style="width: 100%;" th:each="tipos, status : ${tipoPreco}" >
 			<span class="txt1 p-b-11" th:text="${tipos}"></span>
 				<div class="wrap-input100 validate-input m-b-36">
-					<input class="input100" type="text" th:name="'precos['+${status.index}+'].valor'" required>
+					<input class="input100" type="text" th:name="'precos['+${status.index}+'].valor'" >
 					<input class="input100" type="hidden" th:name="'precos['+${status.index}+'].tipo'" th:value="${tipos}" >
 				</div>
 			</div>

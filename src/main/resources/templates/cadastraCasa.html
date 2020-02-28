@@ -51,10 +51,7 @@
       <td th:text="${casa.street}">Otto</td>
       <td><a th:href="@{/casa/editar/{id}(id=${casa.id})}" class="login50-form-btn" type="submit" style="color:fff; text-decoration: none;"><i class="far fa-edit"></i></a></td>
       <td>
-     <a data-toggle="modal" data-target="#modalExcluir" th:attr="data-codigo=${casa.id}, data-descricao=${casa.name}" rel="tooltip" data-placement="top" 
-      title="Excluir" class="login50-form-btn" style="color:fff;" ><i class="far fa-trash-alt"></i></a> 
-  	<!-- <a th:href="@{/casa/delete/{id}(id=${casa.id})}">Excluir</a> --> 
-	<div layout:insert="modalExcluir"></div>
+     <a th:href="@{/casa/delete/{id}(id=${casa.id})}" class="login50-form-btn" style="color:fff;" ><i class="far fa-trash-alt"></i></a> 
       </td>
     </tr>
     <tr>

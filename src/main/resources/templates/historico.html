@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="TemplatePadrao">
+
+
+<section layout:fragment="conteudo"><br>
+	
+  
+ 	<div class="jumbotron jumbotron-fluid bg-fundo">
+  <div class="container text-center">
+    <h1 class="display-4" style="color: #fff;">Bem vindo [[${#httpServletRequest.remoteUser}]] ! </h1>
+ 
+  </div>
+  </div>
+
+ <div class="container" >
+ <span class="login100-form-title p-b-32">
+	Histórico
+</span>
+<div class="card" th:each="lista : ${listaHisto}" style="margin-bottom: 10px;">
+  <div class="card-body">
+   <div class="container">
+ 	<div class="row">
+	    <div class="col-sm-2 text-center">
+	      <i class="fas fa-barcode fa-6x"></i><br>
+	      <strong th:text="${lista.codigo}"></strong>
+	    </div>
+	    <div class="col-sm-10 text-center">
+	      <ul>
+	      	<li><strong>Data:</strong> <span th:text="${{lista.dataEvento}}"></span></li>
+	      	<li><strong>Nome do evento:</strong> <span th:text="${lista.nome}"></span></li>
+	      	<li><strong>Local do evento:</strong> <span th:text="${lista.local}"></span></li>
+	      	<li><strong>Quantidade de ingressos comprados:</strong> <span th:text="${lista.qtd}"></span></li>
+	      	<li><strong>Total da compra:</strong> <span th:text="|R$ ${{lista.total}}|"></span></li>
+	      </ul>
+	    </div>
+  </div>
+</div>
+  </div>
+</div>
+ </div>
+</section>
+
+</html>
